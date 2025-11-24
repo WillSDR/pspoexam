@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import StartScreen from './components/StartScreen';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
+import Background3D from './components/Background3D';
 import { questions } from './data/questions';
 
 function App() {
@@ -24,6 +25,13 @@ function App() {
     setGameState('result');
   };
 
+  const cancelQuiz = () => {
+    setGameState('start');
+    setScore(0);
+    setTimeTaken(0);
+    setWrongAnswers([]);
+  };
+
   const restartQuiz = () => {
     setGameState('start');
     setScore(0);
@@ -33,11 +41,16 @@ function App() {
 
   return (
     <>
+      <Background3D />
       {gameState === 'start' && (
         <StartScreen onStart={startQuiz} totalQuestions={questions.length} />
       )}
       {gameState === 'quiz' && (
-        <Quiz questions={questions} onComplete={finishQuiz} />
+        <Quiz
+          questions={questions}
+          onComplete={finishQuiz}
+          onCancel={cancelQuiz}
+        />
       )}
       {gameState === 'result' && (
         <Result
