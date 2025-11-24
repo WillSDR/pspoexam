@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Result({ score, totalQuestions, timeTaken, onRestart }) {
+export default function Result({ score, totalQuestions, timeTaken, wrongAnswers, onRestart }) {
     const percentage = Math.round((score / totalQuestions) * 100);
 
     let message = '';
@@ -15,7 +15,7 @@ export default function Result({ score, totalQuestions, timeTaken, onRestart }) 
     };
 
     return (
-        <div className="container" style={{ textAlign: 'center' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '1000px' }}>
             <h1>Quiz Complete</h1>
 
             <div className="score-circle" style={{ '--score-percent': `${percentage}%` }}>
@@ -36,6 +36,60 @@ export default function Result({ score, totalQuestions, timeTaken, onRestart }) 
             <div style={{ marginBottom: '3rem' }}>
                 <p style={{ fontSize: '1.2rem', color: 'var(--color-text)' }}>{message}</p>
             </div>
+
+            {wrongAnswers.length > 0 && (
+                <div style={{ textAlign: 'left', marginBottom: '3rem' }}>
+                    <h3 style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '1rem', marginBottom: '2rem' }}>
+                        Review Incorrect Answers ({wrongAnswers.length})
+                    </h3>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                        {wrongAnswers.map((item, index) => (
+                            <div key={index} style={{
+                                background: 'rgba(255,255,255,0.03)',
+                                padding: '1.5rem',
+                                borderRadius: 'var(--radius-lg)',
+                                border: '1px solid rgba(255,255,255,0.05)'
+                            }}>
+                                <h4 style={{ marginBottom: '1rem', color: 'var(--color-text)' }}>
+                                    {index + 1}. {item.question.text}
+                                </h4>
+
+                                <div style={{ marginBottom: '1rem' }}>
+                                    <span style={{ color: 'var(--color-error)', fontSize: '0.9rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
+                                        Your Answer:
+                                    </span>
+                                    {item.selected.map(i => (
+                                        <div key={i} style={{ padding: '0.5rem', background: 'rgba(239, 68, 68, 0.1)', borderRadius: 'var(--radius-sm)', marginBottom: '0.25rem', color: 'var(--color-error)' }}>
+                                            {item.question.options[i]}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{ marginBottom: '1.5rem' }}>
+                                    <span style={{ color: 'var(--color-success)', fontSize: '0.9rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>
+                                        Correct Answer:
+                                    </span>
+                                    {item.question.correctAnswers.map(i => (
+                                        <div key={i} style={{ padding: '0.5rem', background: 'rgba(16, 185, 129, 0.1)', borderRadius: 'var(--radius-sm)', marginBottom: '0.25rem', color: 'var(--color-success)' }}>
+                                            {item.question.options[i]}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div style={{ padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: 'var(--radius-md)', borderLeft: '3px solid var(--color-primary)' }}>
+                                    <span style={{ color: 'var(--color-primary)', fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', display: 'block', marginBottom: '0.5rem' }}>
+                                        Explanation
+                                    </span>
+                                    <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--color-text-muted)' }}>
+                                        {item.question.explanation}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             <button className="btn" onClick={onRestart}>
                 Try Again

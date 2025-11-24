@@ -5,13 +5,14 @@ export default function Quiz({ questions, onComplete }) {
     const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [score, setScore] = useState(0);
+    const [wrongAnswers, setWrongAnswers] = useState([]);
 
     // Timer state: 30 minutes = 1800 seconds
     const [timeLeft, setTimeLeft] = useState(1800);
 
     useEffect(() => {
         if (timeLeft <= 0) {
-            onComplete(score, 1800 - timeLeft);
+            onComplete(score, 1800 - timeLeft, wrongAnswers);
             return;
         }
 
@@ -20,7 +21,7 @@ export default function Quiz({ questions, onComplete }) {
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [timeLeft, onComplete, score]);
+    }, [timeLeft, onComplete, score, wrongAnswers]);
 
     const formatTime = (seconds) => {
         const mins = Math.floor(seconds / 60);
@@ -56,6 +57,11 @@ export default function Quiz({ questions, onComplete }) {
 
         if (isCorrect) {
             setScore(prev => prev + 1);
+        } else {
+            setWrongAnswers(prev => [...prev, {
+                question: currentQuestion,
+                selected: selectedAnswers
+            }]);
         }
     };
 
@@ -65,7 +71,7 @@ export default function Quiz({ questions, onComplete }) {
             setSelectedAnswers([]);
             setIsSubmitted(false);
         } else {
-            onComplete(score + (isCurrentCorrect() ? 0 : 0), 1800 - timeLeft);
+            onComplete(score + (isCurrentCorrect() ? 0 : 0), 1800 - timeLeft, wrongAnswers);
         }
     };
 
