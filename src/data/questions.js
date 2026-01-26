@@ -583,4 +583,118 @@ export const questions = [
         correctAnswers: [1],
         explanation: "False. Sustainable pace is a core agile principle. The Development Team determines how much work they can take on."
     }
-];
+    ,
+    {
+        "id": 1001,
+        "text": "The \"cone of uncertainty\" can be used to do what?",
+        "options": [
+            "Determine whether to cut quality, similar to the \"Iron Triangle\" of project management.",
+            "Determine the cost of a project before it begins.",
+            "Determine the length of the next Sprint.",
+            "Illustrate that as a project forecast lengthens, it is increasingly less certain."
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "explanation": "The Cone of Uncertainty describes the evolution of the amount of uncertainty during a project. At the beginning, uncertainty is high, and estimates are less accurate. As the project progresses, uncertainty decreases."
+    },
+    {
+        "id": 1002,
+        "text": "The Developers find out during the Sprint that they are not likely to build everything they forecast. What would you expect a Product Owner to do?",
+        "options": [
+            "Cancel the Sprint.",
+            "Skip Product Backlog refinement activities.",
+            "Change the Sprint Goal.",
+            "Inform management that more Developers are needed.",
+            "Re-work the selected Product Backlog items with the Developers to meet the Sprint Goal."
+        ],
+        "correctAnswers": [
+            4
+        ],
+        "explanation": "If the Developers cannot finish their forecast, they should collaborate with the Product Owner to negotiate the scope of the Sprint Backlog without affecting the Sprint Goal."
+    },
+    {
+        "id": 1003,
+        "text": "Who is accountable for creating a valuable and usable Increment each Sprint?",
+        "options": [
+            "The Scrum Team.",
+            "The Product Owner.",
+            "The Scrum Master.",
+            "The CEO.",
+            "The Developers."
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "explanation": "The entire Scrum Team is accountable for creating a valuable, useful Increment every Sprint."
+    },
+    {
+        "id": 1004,
+        "text": "What is the purpose of a Sprint Review?",
+        "options": [
+            "To build team spirit.",
+            "To take time to judge the validity of the project.",
+            "To review the Scrum Team's activities and processes during the Sprint.",
+            "To inspect the product Increment with the stakeholders and collect feedback on next steps."
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "explanation": "The purpose of the Sprint Review is to inspect the outcome of the Sprint and determine future adaptations. The Scrum Team presents the results of their work to key stakeholders and progress toward the Product Goal is discussed."
+    },
+    {
+        "id": 1005,
+        "text": "When should the Product Owner update the project plan?",
+        "options": [
+            "Before the Sprint Planning to know how much work will have to be done in the Sprint.",
+            "The project plan must be updated prior to the Sprint Retrospective.",
+            "After the Daily Scrum to ensure an accurate daily overview of project progress.",
+            "The Product Backlog is the plan in Scrum. It is updated as new information and insights emerge."
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "explanation": "In Scrum, the Product Backlog serves as the plan for the product. It is dynamic and evolves as the product and environment evolve."
+    },
+    {
+        "id": 1006,
+        "text": "Who determines how many Product Backlog items the Developers select for a Sprint?",
+        "options": [
+            "The stakeholders attending Sprint Planning.",
+            "The Scrum Master.",
+            "The Developers.",
+            "The Product Owner.",
+            "The Scrum Team."
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "explanation": "The number of items selected from the Product Backlog for the Sprint is solely up to the Developers. Only they can assess what they can accomplish over the upcoming Sprint."
+    },
+    {
+        "id": 1007,
+        "text": "Which answer best describes the topics covered in Sprint Planning?",
+        "options": [
+            "Who is on the team and what team member roles will be.",
+            "What went wrong in the last Sprint and what to do differently this Sprint.",
+            "What can be done, how to do it, and why to do it.",
+            "What to do and who will do it."
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "explanation": "Sprint Planning addresses the following topics: Why is this Sprint valuable? (Why), What can be Done this Sprint? (What), and How will the chosen work get done? (How)."
+    },
+    {
+        "id": 1008,
+        "text": "The Product Owner is the person who will be held accountable if a product does not achieve its goals or deliver value. Does this mean that the Product Owner has final say over the Definition of Done?",
+        "options": [
+            "Yes, the Product Owner decides the Definition of Done. The Developers may be consulted.",
+            "No, the Scrum Team decides the Definition of Done, if it is not a standard of the organization."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "explanation": "If the Definition of Done for an increment is not a convention of the development organization, the Scrum Team must define a Definition of Done appropriate for the product."
+    }
+]
